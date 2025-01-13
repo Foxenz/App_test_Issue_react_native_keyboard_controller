@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import {KeyboardProvider} from "react-native-keyboard-controller";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,11 +50,14 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+      <KeyboardProvider>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="(modal)/modal" options={{ presentation: 'modal', animation: 'fade_from_bottom' }} />
+            <Stack.Screen name="(modal)/modal2" options={{ presentation: 'modal', animation: 'fade_from_bottom' }} />
+          </Stack>
+        </ThemeProvider>
+      </KeyboardProvider>
   );
 }
