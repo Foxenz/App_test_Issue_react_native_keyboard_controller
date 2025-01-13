@@ -9,7 +9,7 @@ export default function ModalScreen() {
 
   const MyTestInput = () => {
     return(<View style={styles.card}>
-      <Text style={styles.title}>Modal 2</Text>
+      <Text style={styles.title}>Modal 1</Text>
       <TextInput style={styles.input} placeholder="Type something" />
     </View>);
   };
